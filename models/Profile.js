@@ -21,6 +21,9 @@ const ProfileSchema = new Schema({
         type:String,
         required:true
     },
+    website:{
+        type:String,
+    },
     skills:{
         type:[String],
     },
