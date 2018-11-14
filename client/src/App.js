@@ -6,10 +6,17 @@ import Footer from './components/src/Footer';
 import Landing from './components/src/Landing';
 import Login from './components/src/auth/Login';
 import Register from './components/src/auth/Register';
+import {setCurrentUser} from "./actions/authActions";
+import setAuthToken from './utils/setAuthToken';
+import jwt_decode from 'jwt-decode';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-
+if (localStorage.jwt){
+    setAuthToken(localStorage.jwt);
+    const decoded = jwt_decode(localStorage.jwt);
+    store.dispatch(setCurrentUser(decoded));
+}
 
 class App extends Component {
     render() {
