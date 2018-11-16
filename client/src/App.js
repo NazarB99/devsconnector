@@ -6,7 +6,7 @@ import Footer from './components/src/Footer';
 import Landing from './components/src/Landing';
 import Login from './components/src/auth/Login';
 import Register from './components/src/auth/Register';
-import {setCurrentUser} from "./actions/authActions";
+import {logoutUser, setCurrentUser} from "./actions/authActions";
 import setAuthToken from './utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import './App.css';
@@ -16,6 +16,12 @@ if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
     const decoded = jwt_decode(localStorage.jwt);
     store.dispatch(setCurrentUser(decoded));
+
+    const currentTime = Date.now() / 1000;
+    if (decoded.exp < currentTime){
+        store.dispatch(logoutUser());
+        window.location.href = '/login'
+    }
 }
 
 class App extends Component {
