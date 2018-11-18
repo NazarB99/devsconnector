@@ -1,4 +1,4 @@
-import {SET_CURRENT_PROFILE, SET_PROFILE_LOADING} from "../actions/types";
+import {SET_CURRENT_PROFILE, SET_PROFILE_LOADING, CLEAR_PROFILE_DATA} from "../actions/types";
 import axios from 'axios';
 
 export const setCurrentProfile = () => dispatch => {
@@ -22,5 +22,11 @@ export const setCurrentProfile = () => dispatch => {
 export const setProfileLoading = () => {
     return {
         type: SET_PROFILE_LOADING
+    }
+};
+
+export const clearProfileData = () => {
+    return {
+        type: CLEAR_PROFILE_DATA
     }
 };

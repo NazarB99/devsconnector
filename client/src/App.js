@@ -11,7 +11,8 @@ import {logoutUser, setCurrentUser} from "./actions/authActions";
 import setAuthToken from './utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+import PrivateRoute from './components/src/common/PrivateRoute';
 
 if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
@@ -35,7 +36,9 @@ class App extends Component {
                         <Route exact path="/" component={Landing}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
-                        <Route exact path="/dashboard" component={Dashboard}/>
+                        <Switch>
+                            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                        </Switch>
                         <Footer/>
                     </div>
                 </Router>
