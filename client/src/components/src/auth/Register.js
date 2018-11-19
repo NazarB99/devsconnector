@@ -59,7 +59,7 @@ class Register extends Component {
                                 <TextFiledGroup name="name" placeholder="Name" value={this.state.name} error={errors.name} onChange={this.onChange}/>
                                 <TextFiledGroup name="email" placeholder="Email Address" info="This site uses Gravatar so if you want a
                                         profile image, use a Gravatar email" value={this.state.email}
-                                                type="email" error={errors.name} onChange={this.onChange}/>
+                                                type="email" error={errors.email} onChange={this.onChange}/>
                                 <TextFiledGroup name="password" placeholder="Password" value={this.state.password}
                                                 type="password" error={errors.password} onChange={this.onChange}/>
                                 <TextFiledGroup name="password2" placeholder="Confirm Password" value={this.state.password}

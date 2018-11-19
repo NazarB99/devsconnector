@@ -24,7 +24,7 @@ router.post('/register', (req, res) => {
     }).then(user => {
         if (user) {
             const errors = {email:'Email already exists'};
-            return res.status(400).json({errors})
+            return res.status(400).json(errors)
         }
         else {
             const avatar = gravatar.url(req.body.email, {s: '200', r: 'pg', d: 'mm'});
@@ -59,7 +59,7 @@ router.post('/login', (req, res) => {
 
     User.findOne({email}).then(user => {
         if (!user) {
-            res.status(404).json({msg: 'User not found'})
+            res.status(404).json({email: 'User not found'})
         }
 
         bcrypt.compare(password, user.password).then(isMatch => {
