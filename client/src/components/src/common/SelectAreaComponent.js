@@ -12,7 +12,7 @@ const SelectFieldGroup = ({name,options,value,label,error,info,onChange}) => {
         <div className="form-group">
             <select className={classnames('form-control form-control-lg', {
                 'is-invalid': error
-            })} name={name} onChange={onChange}>
+            })} name={name} value={value} onChange={onChange}>
                 {selectOptions}
             </select>
             {info && <small className="form-text text-muted">{info}</small>}

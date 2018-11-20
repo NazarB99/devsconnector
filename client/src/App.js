@@ -8,6 +8,7 @@ import Login from './components/src/auth/Login';
 import Register from './components/src/auth/Register';
 import Dashboard from './components/src/profile/Dashboard';
 import CreateProfile from './components/src/create-profile/createProfile';
+import EditProfile from './components/src/edit-profile/editProfile';
 import {logoutUser, setCurrentUser} from "./actions/authActions";
 import setAuthToken from './utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -42,6 +43,9 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
                         </Switch>
                         <Footer/>
                     </div>

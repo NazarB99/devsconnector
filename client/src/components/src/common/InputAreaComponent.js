@@ -12,7 +12,7 @@ const InputFieldGroup = ({name,placeholder,value,label,icon,error,onChange}) => 
             </div>
             <input className={classnames('form-control form-control-lg', {
                 'is-invalid': error
-            })} name={name} placeholder="Please enter a valid URL" onChange={onChange} />
+            })} name={name} value={value} placeholder="Please enter a valid URL" onChange={onChange} />
             {error && (<div className="invalid-feedback">{error}</div>)}
         </div>
     )
