@@ -58,7 +58,7 @@ class AddExperience extends Component {
                             <h6>To Date</h6>
                             <TextFieldGroup name="to" value={this.state.to} type="date" error={errors.to} onChange={this.onChange} placeholder="To" disabled={this.state.disabled ? 'disabled' : ''}/>
                             <div className="form-check mb-4">
-                                <   type="checkbox" className="form-check-input" name="current" checked={this.state.current} value={this.state.current} onChange={this.onCheck} id="current" />
+                                <input type="checkbox" className="form-check-input" name="current" checked={this.state.current} value={this.state.current} onChange={this.onCheck} id="current" />
                                 <label htmlFor="current" className="form-check-label">Current Job</label>
                             </div>
                             <TextAreaGroup name="description" error={errors.description} value={this.state.description} onChange={this.onChange}/>
