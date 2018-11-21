@@ -15,6 +15,7 @@ import jwt_decode from 'jwt-decode';
 import './App.css';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import PrivateRoute from './components/src/common/PrivateRoute';
+import AddExperience from "./components/src/add-credentials/AddExperience";
 
 if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
@@ -46,6 +47,9 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/add-experience" component={AddExperience}/>
                         </Switch>
                         <Footer/>
                     </div>
