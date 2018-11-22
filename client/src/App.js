@@ -16,6 +16,7 @@ import './App.css';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import PrivateRoute from './components/src/common/PrivateRoute';
 import AddExperience from "./components/src/add-credentials/AddExperience";
+import AddEducation from "./components/src/add-credentials/AddEducation";
 
 if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
@@ -50,6 +51,9 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <PrivateRoute exact path="/add-experience" component={AddExperience}/>
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/add-education" component={AddEducation}/>
                         </Switch>
                         <Footer/>
                     </div>
