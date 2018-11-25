@@ -17,6 +17,7 @@ import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import PrivateRoute from './components/src/common/PrivateRoute';
 import AddExperience from "./components/src/add-credentials/AddExperience";
 import AddEducation from "./components/src/add-credentials/AddEducation";
+import Profiles from './components/src/profile/Profiles';
 
 if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
@@ -30,6 +31,12 @@ if (localStorage.jwt){
     }
 }
 
+setTimeout(() => {
+    if (localStorage.jwt) {
+        window.location.reload(true);
+    }
+},3600000);
+
 class App extends Component {
     render() {
         return (
@@ -40,6 +47,7 @@ class App extends Component {
                         <Route exact path="/" component={Landing}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
+                        <Route exact path="/profiles" component={Profiles}/>
                         <Switch>
                             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
                         </Switch>
