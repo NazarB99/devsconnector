@@ -4,7 +4,7 @@ import {
     SET_PROFILE_LOADING,
     CLEAR_PROFILE_DATA,
     GET_ERRORS,
-    SET_CURRENT_USER
+    SET_CURRENT_USER, GET_PROFILE_REPOS
 } from "../actions/types";
 import axios from 'axios';
 
@@ -54,6 +54,18 @@ export const getProfileByHandle = (handle) => dispatch => {
             type:GET_ERRORS,
             payload:err.response.data
         }))
+};
+
+export const getProfileGithub = (githubusername) => dispatch =>{
+  axios.get(`https://api.github.com/users/${githubusername}/repos`)
+      .then(res => dispatch({
+          type:GET_PROFILE_REPOS,
+          payload:res.data
+      }))
+      .catch(err => dispatch({
+          type:GET_ERRORS,
+          payload:err.response.data
+      }))
 };
 
 export const addExperience = (expData,history) => dispatch => {

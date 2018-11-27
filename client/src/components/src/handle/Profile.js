@@ -33,7 +33,7 @@ class Profile extends Component {
                     <ProfileHeader profile={profile}/>
                     <ProfileAbout profile={profile}/>
                     <ProfileCreds profile={profile}/>
-                    <ProfileGithub profile={profile}/>
+                    <ProfileGithub />
                 </div>
             )
         }
