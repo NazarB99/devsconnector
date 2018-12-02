@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {getProfileGithub} from "../../../actions/profileActions";
 import isEmpty from "../../../validation/is-empty";
 
 class ProfileGithub extends Component {
+    constructor(props){
+        super(props);
+
+        this.state ={
+            repos:[]
+        }
+    }
     componentDidMount() {
-        this.props.getProfileGithub(this.props.profile.profile.githubusername);
+        fetch(`https://api.github.com/users/${this.props.githubusername}/repos`)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({repos:data})
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
-        const {repos} = this.props.profile;
+        const {repos} = this.state;
         let reposContent;
         if (isEmpty(repos)) {
             reposContent = (
@@ -52,8 +64,4 @@ class ProfileGithub extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    profile: state.profile
-});
-
-export default connect(mapStateToProps, {getProfileGithub})(ProfileGithub);
+export default ProfileGithub;

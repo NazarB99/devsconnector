@@ -19,6 +19,7 @@ import AddExperience from "./components/src/add-credentials/AddExperience";
 import AddEducation from "./components/src/add-credentials/AddEducation";
 import Profiles from './components/src/profile/Profiles';
 import Profile from './components/src/handle/Profile';
+import Posts from "./components/src/posts/Posts";
 
 if (localStorage.jwt){
     setAuthToken(localStorage.jwt);
@@ -64,6 +65,9 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <PrivateRoute exact path="/add-education" component={AddEducation}/>
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/feed" component={Posts}/>
                         </Switch>
                         <Footer/>
                     </div>
