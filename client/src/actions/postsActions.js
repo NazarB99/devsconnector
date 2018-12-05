@@ -1,5 +1,15 @@
 import axios from 'axios';
-import {ADD_POST, POST_LOADING, GET_ERRORS, GET_POSTS, DELETE_POST, GET_POST, ADD_COMMENT} from "./types";
+import {
+    ADD_POST,
+    POST_LOADING,
+    GET_ERRORS,
+    GET_POSTS,
+    DELETE_POST,
+    GET_POST,
+    ADD_COMMENT,
+    LIKE_POST,
+    DISLIKE_POST
+} from "./types";
 
 export const addPost = postData => dispatch => {
     axios.post('/api/posts', postData)
@@ -50,6 +60,30 @@ export const deletePost = (postId) => dispatch => {
         .then(res => dispatch({
             type: DELETE_POST,
             payload: postId
+        }))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err
+        }))
+};
+
+export const likePost = (postId) => dispatch => {
+    axios.post(`/api/posts/like/${postId}`)
+        .then(res => dispatch({
+            type: LIKE_POST,
+            payload: res.data
+        }))
+        .catch(err => dispatch({
+            type: GET_ERRORS,
+            payload: err
+        }))
+};
+
+export const dislikePost = (postId) => dispatch => {
+    axios.post(`/api/posts/unlike/${postId}`)
+        .then(res => dispatch({
+            type: DISLIKE_POST,
+            payload: res.data
         }))
         .catch(err => dispatch({
             type: GET_ERRORS,
